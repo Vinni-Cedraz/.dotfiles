@@ -1,19 +1,10 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+source ~/.antigen/antigen.zsh
 
  PATH=$PATH:~/.local
  PATH=$PATH:~/.local/bin/
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-. "$HOME/.cargo/env"
-
-alias zshrc="nvim ~/.dotfiles_/zshrc"
+alias zshrc="nvim ~/.dotfiles/zshrc"
 alias la="exa"
 alias lx="exa -la"
 alias bat="~/.local/bat/bat"
@@ -34,14 +25,9 @@ alias norminette='norminette -R CheckForbiddenSourceHeader'
 # 42 header:
 export USER='vcedraz-'
 export MAIL='vcedraz-@student.42sp.org.br'
+# 42 header end;
 
-
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-. "$HOME/.cargo/env"
-
-source ~/powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-source /nfs/homes/vcedraz-/.plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /nfs/homes/vcedraz-/zsh-autosuggestions/zsh-autosuggestions.zsh
+# antigen zsh pkg manager:
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen apply
+# antigen end
