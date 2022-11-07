@@ -18,10 +18,19 @@ alias war='~/libft_revisited/./war.sh'
 alias paths='echo $PATH | sed "s/:/\n/g"'
 alias robot='robot -d reports/ -i'
 alias rbt='pip3 install robotframework-seleniumlibrary'
-alias cleantrash='~/scripts/./clean.sh'
+alias cleantrash='~/scripts/./cleantrash.sh'
 alias norminette='norminette -R CheckForbiddenSourceHeader'
 alias red='redshift &'
 alias redoff='pkill redshift'
+alias git hsh='git log --pretty=%H -5'
+alias find_delete='~/./scripts/shell00/ex08/clean.sh'
+alias mygroups='~/./scripts/shell01/ex01/print_groups.sh'
+alias myMAC='~/./scripts/shell01/ex04/MAC.sh'
+alias a='/usr/bin/mate-screenshot -a'
+alias dstatus='systemctl status docker' #pra ver se a daemon ta rodando
+alias dstart='systemctl start docker'  #pra rodar o docker
+alias denable='systemctl enable docker' #pra rodar o docker quando o sistema iniciar
+
 # 42 header:
 export USER='vcedraz-'
 export MAIL='vcedraz-@student.42sp.org.br'
