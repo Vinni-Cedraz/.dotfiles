@@ -9,7 +9,7 @@ alias la="exa"
 alias lx="exa -la"
 alias gnl='~/42/GNL/./GNL'
 alias codelldb="~/./.local/share/nvim/mason/packages/codelldb/codelldb"
-alias cc="cc -g -Wall -Wextra -Werror"
+alias cc="cc -O3 -Wall -Wextra -Werror"
 alias valflags='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes'
 alias gnlcompile='cc get_next_line.c get_next_line_utils.c main.c -o GNL && ./GNL'
 alias gnlbonuscompile='cc get_next_line_bonus.c get_next_line_utils_bonus.c main.c -o GNL && ./GNL'
