@@ -1,12 +1,33 @@
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-source ~/.antigen/antigen.zsh
-
+# paths
  PATH=$PATH:~/.local
  PATH=$PATH:~/.local/bin/
+ PATH=$PATH:~/.local/nvim/bin
+#paths end
 
-alias zshrc="lvim ~/.dotfiles/zshrc"
-alias la="exa"
-alias lx="exa -la"
+
+# ZSH PLUGINS
+source ~/.plugin/antigen.zsh
+source $HOME/.plugin/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/.plugin/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+export ZVM_VI_ESCAPE_BINDKEY='jk'
+#ZSH PLUGINS END
+
+
+# FIXED COMMANDS
+setxkbmap -option caps:none
+#FIXED COMMANDS END
+
+
+# P10K 
+source ~/home/stuff/powerlevel10k/powerlevel10k.zsh-theme
+[[ ! -f ~/.p10k.zsh ]] || source ~/.plugin/p10k.zsh
+#P10K end
+
+
+# ALIASES
+alias zshrc="nvim ~/.dotfiles/zshrc"
+alias ls="exa"
+alias lx="ls -la"
 alias gnl='~/42/GNL/./GNL'
 alias codelldb="~/./.local/share/nvim/mason/packages/codelldb/codelldb"
 alias cc="cc -O3 -Wall -Wextra -Werror"
@@ -28,15 +49,54 @@ alias mygroups='~/./scripts/shell01/ex01/print_groups.sh'
 alias myMAC='~/./scripts/shell01/ex04/MAC.sh'
 alias a='/usr/bin/mate-screenshot -a'
 alias dstatus='systemctl status docker' #pra ver se a daemon ta rodando
-alias dstart='systemctl start docker'  #pra rodar o docker
+alias dstart='systemctl start docker'   #pra rodar o docker
 alias denable='systemctl enable docker' #pra rodar o docker quando o sistema iniciar
+alias tree='tre'
+
+#VINNIVIM ALIASES
+export P=~/.config/nvim/lua/user
+alias vim='nvim'
+alias autocommands='nvim $P/autocommands.lua'
+alias keymaps='nvim $P/keymaps.lua'
+alias options='nvim $P/options.lua'
+alias plugins='nvim $P/plugins.lua' 
+alias transparency='nvim $P/transparent.lua'
+alias telescope='nvim $P/telescope.lua'
+alias dap='nvim $P/dap.lua'
+alias lsp='nvim $P/lsp/mason.lua'
+
+#VINNIVIM ALIASES END
+
+#ALIASES END
 
 # 42 header:
 export USER='vcedraz-'
 export MAIL='vcedraz-@student.42sp.org.br'
-# 42 header end;
+#42 header end;
 
 # antigen zsh pkg manager:
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
-# antigen end
+#antigen end
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/nfs/homes/vcedraz-/.local/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/nfs/homes/vcedraz-/.local/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/nfs/homes/vcedraz-/.local/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/nfs/homes/vcedraz-/.local/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+. "$HOME/.cargo/env"
+#<<< conda end <<<
+
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
