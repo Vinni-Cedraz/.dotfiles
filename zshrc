@@ -6,9 +6,7 @@
 
 
 # ZSH PLUGINS
-source ~/.plugin/antigen.zsh
-source $HOME/.plugin/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $HOME/.plugin/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+source ~/antigen.zsh
 export ZVM_VI_ESCAPE_BINDKEY='jk'
 #ZSH PLUGINS END
 
@@ -16,12 +14,6 @@ export ZVM_VI_ESCAPE_BINDKEY='jk'
 # FIXED COMMANDS
 setxkbmap -option caps:none
 #FIXED COMMANDS END
-
-
-# P10K 
-source ~/home/stuff/powerlevel10k/powerlevel10k.zsh-theme
-[[ ! -f ~/.p10k.zsh ]] || source ~/.plugin/p10k.zsh
-#P10K end
 
 
 # ALIASES
@@ -64,9 +56,7 @@ alias transparency='nvim $P/transparent.lua'
 alias telescope='nvim $P/telescope.lua'
 alias dap='nvim $P/dap.lua'
 alias lsp='nvim $P/lsp/mason.lua'
-
 #VINNIVIM ALIASES END
-
 #ALIASES END
 
 # 42 header:
@@ -80,22 +70,22 @@ antigen apply
 #antigen end
 
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/nfs/homes/vcedraz-/.local/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/nfs/homes/vcedraz-/.local/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/nfs/homes/vcedraz-/.local/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/nfs/homes/vcedraz-/.local/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-. "$HOME/.cargo/env"
-#<<< conda end <<<
+# # >>> conda initialize >>>
+# # !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$('/nfs/homes/vcedraz-/.local/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/nfs/homes/vcedraz-/.local/miniconda3/etc/profile.d/conda.sh" ]; then
+#         . "/nfs/homes/vcedraz-/.local/miniconda3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/nfs/homes/vcedraz-/.local/miniconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# . "$HOME/.cargo/env"
+# #<<< conda end <<<
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
