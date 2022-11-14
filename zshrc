@@ -2,18 +2,15 @@
  PATH=$PATH:~/.local
  PATH=$PATH:~/.local/bin/
  PATH=$PATH:~/.local/nvim/bin
+ PATH=$PATH:~/.cargo/bin
+export ZVM_VI_ESCAPE_BINDKEY='jk'
 #paths end
 
 
 # ZSH PLUGINS
-source ~/antigen.zsh
-export ZVM_VI_ESCAPE_BINDKEY='jk'
-#ZSH PLUGINS END
-
-
-# FIXED COMMANDS
-setxkbmap -option caps:none
-#FIXED COMMANDS END
+source ~/.antigen.zsh
+source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#ZSH PLUGINS END FIXED COMMANDS setxkbmap -option caps:none source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh FIXED COMMANDS END
 
 
 # ALIASES
@@ -44,6 +41,8 @@ alias dstatus='systemctl status docker' #pra ver se a daemon ta rodando
 alias dstart='systemctl start docker'   #pra rodar o docker
 alias denable='systemctl enable docker' #pra rodar o docker quando o sistema iniciar
 alias tree='tre'
+alias hili='source ~/./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
+alias wezconfig='nvim ~/.config/wezterm/wezterm.lua'
 
 #VINNIVIM ALIASES
 export P=~/.config/nvim/lua/user
@@ -65,7 +64,8 @@ export MAIL='vcedraz-@student.42sp.org.br'
 #42 header end;
 
 # antigen zsh pkg manager:
-antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle jeffreytse/zsh-vi-mode
+antigen bundle zsh-users/zsh-autosuggestions
 antigen apply
 #antigen end
 
