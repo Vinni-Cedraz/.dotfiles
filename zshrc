@@ -1,19 +1,39 @@
-# paths
+# linex configured by new zsh user
+HISTFILE=~/.histfile
+HISTSIZE=999999
+SAVEHIST=999999
+unsetopt autocd beep extendedglob nomatch notify
+# End of lines configured by zsh-newuser-install
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
  PATH=$PATH:~/.local
  PATH=$PATH:~/.local/bin/
  PATH=$PATH:~/.local/nvim/bin
  PATH=$PATH:~/.cargo/bin
+
 export ZVM_VI_ESCAPE_BINDKEY='jk'
 #paths end
 
-
 # ZSH PLUGINS
+source ~/powerlevel10k/powerlevel10k.zsh-theme
 source ~/.antigen.zsh
-source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-#ZSH PLUGINS END FIXED COMMANDS setxkbmap -option caps:none source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh FIXED COMMANDS END
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+#ZSH PLUGINS END 
+
+# FIXED COMMANDS 
+nvm use 16
+setxkbmap -option caps:none 
+
+
+#FIXED COMMANDS END
 
 
 # ALIASES
+alias vim='nvim'
 alias zshrc="nvim ~/.dotfiles/zshrc"
 alias ls="exa"
 alias lx="ls -la"
@@ -46,7 +66,6 @@ alias wezconfig='nvim ~/.config/wezterm/wezterm.lua'
 
 #VINNIVIM ALIASES
 export P=~/.config/nvim/lua/user
-alias vim='nvim'
 alias autocommands='nvim $P/autocommands.lua'
 alias keymaps='nvim $P/keymaps.lua'
 alias options='nvim $P/options.lua'
