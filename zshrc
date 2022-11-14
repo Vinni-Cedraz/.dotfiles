@@ -18,31 +18,41 @@ export NVM_DIR="$HOME/.nvm"
 export ZVM_VI_ESCAPE_BINDKEY='jk'
 #paths end
 
+
 # ZSH PLUGINS
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 source ~/.antigen.zsh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 #ZSH PLUGINS END 
 
+
 # FIXED COMMANDS 
 nvm use 16
 setxkbmap -option caps:none 
-
-
 #FIXED COMMANDS END
 
 
 # ALIASES
-alias vim='nvim'
+
+alias ubunturun="sudo docker run -it --name my_ubuntu_container my_image"
+alias ubuntustart="sudo docker start my_ubuntu_container"
+alias ubuntu="sudo docker exec -it my_ubuntu_container /bin/zsh"
+alias ubuntustop="sudo docker stop my_ubuntu_container"
+alias ubuntudel="sudo docker rm my_ubuntu_container"
+alias xrdb="xrdb -merge ~/.Xresources"
+alias g="sed -i 's/-O3/-g/g' libs/**/Makefile Makefile"
+alias O3="sed -i 's/-g/-O3/g' libs/**/Makefile Makefile"
+alias callgrind="valgrind --tool=callgrind"
+alias vimbegood='sudo docker run -it --rm brandoncc/vim-be-good:stable'
+alias rec='simplescreenrecorder &'
 alias zshrc="nvim ~/.dotfiles/zshrc"
 alias ls="exa"
 alias lx="ls -la"
 alias gnl='~/42/GNL/./GNL'
 alias codelldb="~/./.local/share/nvim/mason/packages/codelldb/codelldb"
-alias cc="cc -O3 -Wall -Wextra -Werror"
-alias valflags='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes'
+alias valflags='valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full -q'
 alias gnlcompile='cc get_next_line.c get_next_line_utils.c main.c -o GNL && ./GNL'
-alias gnlbonuscompile='cc get_next_line_bonus.c get_next_line_utils_bonus.c main.c -o GNL && ./GNL'
+alias gnlbonuscompile='cc -g get_next_line_bonus.c get_next_line_utils_bonus.c main.c -o GNL && ./GNL'
 alias trip='~/libft_revisited/./trip.sh'
 alias war='~/libft_revisited/./war.sh'
 alias paths='echo $PATH | sed "s/:/\n/g"'
@@ -52,22 +62,29 @@ alias cleantrash='~/scripts/./cleantrash.sh'
 alias norminette='norminette -R CheckForbiddenSourceHeader'
 alias red='redshift &'
 alias redoff='pkill redshift'
-alias git hsh='git log --pretty=%H -5'
+alias gitlogpretty='git log --pretty=%H -5'
+alias gitignored="git status -s --ignored | grep '!!' | sed 's/!! //'"
 alias find_delete='~/./scripts/shell00/ex08/clean.sh'
 alias mygroups='~/./scripts/shell01/ex01/print_groups.sh'
 alias myMAC='~/./scripts/shell01/ex04/MAC.sh'
 alias a='/usr/bin/mate-screenshot -a'
 alias dstatus='systemctl status docker' #pra ver se a daemon ta rodando
 alias dstart='systemctl start docker'   #pra rodar o docker
+alias drestart='sudo systemctl restart docker'
 alias denable='systemctl enable docker' #pra rodar o docker quando o sistema iniciar
 alias tree='tre'
 alias hili='source ~/./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
 alias wezconfig='nvim ~/.config/wezterm/wezterm.lua'
+alias git_editor='git config --global core.editor "nvim"'
+alias cdplayer='mplayer cdda:// -cache 5000'
+alias s='git status'
+alias d='dmenu_run'
 
 #VINNIVIM ALIASES
 export P=~/.config/nvim/lua/user
 alias autocommands='nvim $P/autocommands.lua'
-alias keymaps='nvim $P/keymaps.lua'
+alias keymaps='nvim $P/keymaps/general_use_keymaps.lua'
+alias colorscheme='nvim $P/colorscheme.lua'
 alias options='nvim $P/options.lua'
 alias plugins='nvim $P/plugins.lua' 
 alias transparency='nvim $P/transparent.lua'
