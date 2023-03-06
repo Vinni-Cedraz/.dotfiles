@@ -11,7 +11,7 @@ alias O3="sed -i 's/-g/-O3/g' libs/**/Makefile Makefile"
 alias callgrind="valgrind --tool=callgrind"
 alias sshadd='eval "$(ssh-agent)" && ssh-add ~/.ssh/id_rs'
 alias zshrc="nvim ~/.dotfiles/zshrc"
-alias ls="ls --color=auto"
+alias ls="exa"
 alias lx="ls -la"
 alias valflags='valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full -q'
 alias trip='~/libft_revisited/./trip.sh'
