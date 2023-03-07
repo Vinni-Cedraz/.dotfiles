@@ -1,4 +1,4 @@
-# linex configured by new zsh user
+# lines configured by new zsh user
 HISTFILE=~/.histfile
 HISTSIZE=999999
 SAVEHIST=999999
@@ -6,44 +6,39 @@ unsetopt autocd beep extendedglob nomatch notify
 # End of lines configured by zsh-newuser-install
 
 
-export LS_COLORS="di=1;34:ln=1;36:so=1;35:pi=1;33:ex=1;32:bd=1;34;46:cd=1;34;43:su=1;31:sg=1;31:tw=1;32:ow=1;33"
+ export NVM_DIR="$HOME/.nvm"
+ [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
+# paths
  PATH=$PATH:~/.local
  PATH=$PATH:~/.local/bin/
  PATH=$PATH:~/.local/nvim/bin
- PATH=$PATH:~/.cargo/bin
+# paths end
 
 export ZVM_VI_ESCAPE_BINDKEY='jk'
-#paths end
 
 
 # ZSH PLUGINS
-source ~/powerlevel10k/powerlevel10k.zsh-theme
 source ~/.antigen.zsh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 #ZSH PLUGINS END 
 
 
 # FIXED COMMANDS 
-nvm use 16
 setxkbmap -option caps:none 
 #FIXED COMMANDS END
 
 
 # ALIASES
 
-alias ubunturun="sudo docker run -it --name my_ubuntu_container my_ubuntu_image"
-alias ubuntustart="sudo docker start my_ubuntu_container"
+alias ubunturun="docker run -it --name dazzling_stonebraker my_ubuntu_image"
+alias ubuntustart="docker start dazzling_stonebraker"
 alias dkeygen="docker run -v /path/to/ssh/keys:/root/.ssh my_ubuntu_image"
 alias sshadd='eval "$(ssh-agent)" && ssh-add ~/.ssh/id_rs'
-alias ubuntu="sudo docker exec -it my_ubuntu_container /bin/zsh"
-alias ubuntustop="sudo docker stop my_ubuntu_container"
-alias ubuntudel="sudo docker rm my_ubuntu_container"
-alias dimagedel="sudo docker system prune -a --force --volumes"
+alias ubuntu="docker exec -it dazzling_stonebraker /bin/zsh"
+alias ubuntustop="docker stop dazzling_stonebraker"
+alias ubuntudel="docker rm dazzling_stonebraker"
+alias dimagedel="docker system prune -a --force --volumes"
 alias xrdb="xrdb -merge ~/.Xresources"
 alias g="sed -i 's/-O3/-g/g' libs/**/Makefile Makefile"
 alias O3="sed -i 's/-g/-O3/g' libs/**/Makefile Makefile"
@@ -51,7 +46,7 @@ alias callgrind="valgrind --tool=callgrind"
 alias vimbegood='sudo docker run -it --rm brandoncc/vim-be-good:stable'
 alias rec='simplescreenrecorder &'
 alias zshrc="nvim ~/.dotfiles/zshrc"
-alias ls="exa"
+alias ls="ls --color=auto"
 alias lx="ls -la"
 alias gnl='~/42/GNL/./GNL'
 alias codelldb="~/./.local/share/nvim/mason/packages/codelldb/codelldb"
@@ -108,9 +103,9 @@ export MAIL='vcedraz-@student.42sp.org.br'
 antigen bundle jeffreytse/zsh-vi-mode
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen theme romkatv/powerlevel10k
 antigen apply
 #antigen end
-
 
 # # >>> conda initialize >>>
 # # !! Contents within this block are managed by 'conda init' !!
