@@ -47,6 +47,7 @@ alias vimbegood='sudo docker run -it --rm brandoncc/vim-be-good:stable'
 alias rec='simplescreenrecorder &'
 alias zshrc="nvim ~/.dotfiles/zshrc"
 alias ls="ls --color=auto"
+alias nvim="vim"
 alias lx="ls -la"
 alias gnl='~/42/GNL/./GNL'
 alias codelldb="~/./.local/share/nvim/mason/packages/codelldb/codelldb"
@@ -65,6 +66,7 @@ alias redoff='pkill redshift'
 alias gitlogpretty='git log --pretty=%H -5'
 alias gitignored="git status -s --ignored | grep '!!' | sed 's/!! //'"
 alias find_delete='~/./scripts/shell00/ex08/clean.sh'
+alias makefd='ln -s $(which fdfind) ~/.local/bin/fd'
 alias mygroups='~/./scripts/shell01/ex01/print_groups.sh'
 alias myMAC='~/./scripts/shell01/ex04/MAC.sh'
 alias a='/usr/bin/mate-screenshot -a'
