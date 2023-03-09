@@ -31,13 +31,13 @@ setxkbmap -option caps:none
 
 # ALIASES
 
-alias ubunturun="docker run -it --name dazzling_stonebraker my_ubuntu_image"
-alias ubuntustart="docker start dazzling_stonebraker"
+alias ubunturun="docker run -it --name my_ubuntu_container my_ubuntu_image"
+alias ubuntustart="docker start my_ubuntu_container"
 alias dkeygen="docker run -v /path/to/ssh/keys:/root/.ssh my_ubuntu_image"
 alias sshadd='eval "$(ssh-agent)" && ssh-add ~/.ssh/id_rs'
-alias ubuntu="docker exec -it dazzling_stonebraker /bin/zsh"
-alias ubuntustop="docker stop dazzling_stonebraker"
-alias ubuntudel="docker rm dazzling_stonebraker"
+alias ubuntu="docker exec -it my_ubuntu_container /bin/zsh"
+alias ubuntustop="docker stop my_ubuntu_container"
+alias ubuntudel="docker rm my_ubuntu_container"
 alias dimagedel="docker system prune -a --force --volumes"
 alias xrdb="xrdb -merge ~/.Xresources"
 alias g="sed -i 's/-O3/-g/g' libs/**/Makefile Makefile"
