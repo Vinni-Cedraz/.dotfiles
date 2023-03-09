@@ -16,6 +16,8 @@ export NVM_DIR="$HOME/.nvm"
  PATH=$PATH:~/.local/bin/
  PATH=$PATH:~/.local/nvim/bin
  PATH=$PATH:~/.cargo/bin
+ PATH=$PATH:/root/.local/share/gem/ruby/3.0.0/bin
+ PATH=$PATH:/home/vcedraz-/.local/share/gem/ruby/3.0.0/bin
 
 export ZVM_VI_ESCAPE_BINDKEY='jk'
 #paths end
@@ -55,7 +57,7 @@ alias ls="exa"
 alias lx="ls -la"
 alias gnl='~/42/GNL/./GNL'
 alias codelldb="~/./.local/share/nvim/mason/packages/codelldb/codelldb"
-alias valflags='valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full -q'
+alias valflags='valgrind --show-leak-kinds=all --track-origins=yes --trace-children=yes -q'
 alias gnlcompile='cc get_next_line.c get_next_line_utils.c main.c -o GNL && ./GNL'
 alias gnlbonuscompile='cc -g get_next_line_bonus.c get_next_line_utils_bonus.c main.c -o GNL && ./GNL'
 alias trip='~/libft_revisited/./trip.sh'
