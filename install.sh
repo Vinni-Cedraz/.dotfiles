@@ -2,6 +2,8 @@
 
 # create .zshrc if it doesn't exist
 touch ~/.zshrc
+mv Xmodmap ~/.Xmodmap
+xmodmap ~/.Xmodmap
 
 # write shell configurations to .zshrc
 echo '# outsourcing my shell configurations directly from dotfiles repo:' >> ~/.zshrc
