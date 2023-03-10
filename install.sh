@@ -4,7 +4,8 @@
 touch ~/.zshrc
 
 # install bat
-ln -s bat/bat /usr/bin/bat
+mv bat /bat
+echo PATH=$PATH:/bat >> ~/.zshrc
 
 # write shell configurations to .zshrc
 echo '# outsourcing my shell configurations directly from dotfiles repo:' >> ~/.zshrc
