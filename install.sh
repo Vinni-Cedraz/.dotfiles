@@ -3,6 +3,9 @@
 # create .zshrc if it doesn't exist
 touch ~/.zshrc
 
+# install bat
+cp -r ./bat ~/.local/bin
+
 # write shell configurations to .zshrc
 echo '# outsourcing my shell configurations directly from dotfiles repo:' >> ~/.zshrc
 echo 'if [ -f ~/.dotfiles/zshrc ]; then' >> ~/.zshrc
