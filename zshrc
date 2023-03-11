@@ -3,6 +3,7 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 #PATHS
 PATH=$PATH:~/.local
 PATH=$PATH:~/.local/bin/
+PATH=$PATH:/root/.cargo/bin
 #PATHS END
 
 # ALIASES
