@@ -13,7 +13,8 @@ alias callgrind="valgrind --tool=callgrind"
 alias sshadd='eval "$(ssh-agent)" && ssh-add ~/.ssh/id_rs'
 alias zshrc="nvim ~/.dotfiles/zshrc"
 alias ls="exa"
-alias lx="ls -la"
+alias lx="\ls -la"
+alias fd="fdfind"
 alias valflags='valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full -q'
 alias trip='~/libft_revisited/./trip.sh'
 alias war='~/libft_revisited/./war.sh'
@@ -21,7 +22,6 @@ alias paths='echo $PATH | sed "s/:/\n/g"'
 alias norminette='norminette -R CheckForbiddenSourceHeader'
 alias drestart='sudo systemctl restart docker'
 alias git_editor='git config --global core.editor "nvim"'
-git_editor # set default git_editor
 alias s='git status'
 #vinnivim aliases
 export P=~/.config/nvim/lua/user
@@ -36,6 +36,12 @@ alias dap='nvim $P/dap.lua'
 alias lsp='nvim $P/lsp/mason.lua'
 #vinnivim aliases end
 #ALIASES END
+
+#git settings
+git_editor # set default git_editor
+git config --global user.name "Vinni-Cedraz"
+git config --global user.email "Vinni.vcr@gmail.com"
+#git settings end
 
 # zsh macros
 HISTFILE=~/.histfile
