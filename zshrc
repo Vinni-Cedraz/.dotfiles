@@ -5,10 +5,6 @@ SAVEHIST=999999
 unsetopt autocd beep extendedglob nomatch notify
 # End of lines configured by zsh-newuser-install
 
-
- export NVM_DIR="$HOME/.nvm"
- [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
 # paths
  PATH=$PATH:~/.local
  PATH=$PATH:~/.local/bin/
@@ -25,7 +21,7 @@ source ~/.antigen.zsh
 
 
 # FIXED COMMANDS 
-setxkbmap -option caps:none 
+#setxkbmap -option caps:none 
 #FIXED COMMANDS END
 
 
@@ -105,26 +101,8 @@ export MAIL='vcedraz-@student.42sp.org.br'
 antigen bundle jeffreytse/zsh-vi-mode
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
-antigen theme romkatv/powerlevel10k
 antigen apply
 #antigen end
-
-# # >>> conda initialize >>>
-# # !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/nfs/homes/vcedraz-/.local/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/nfs/homes/vcedraz-/.local/miniconda3/etc/profile.d/conda.sh" ]; then
-#         . "/nfs/homes/vcedraz-/.local/miniconda3/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/nfs/homes/vcedraz-/.local/miniconda3/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-# . "$HOME/.cargo/env"
-# #<<< conda end <<<
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"

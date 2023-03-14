@@ -1,0 +1,6 @@
+clear Lock
+remove Shift = Shift_R
+keycode 66 = BackSpace
+keycode 22 = Hyper_L 
+keycode 62 = Up
+keycode 111 = Shift_R
