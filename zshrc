@@ -21,7 +21,7 @@ source ~/.antigen.zsh
 
 
 # FIXED COMMANDS 
-#setxkbmap -option caps:none 
+xmodmap ~/.Xmodmap
 #FIXED COMMANDS END
 
 
