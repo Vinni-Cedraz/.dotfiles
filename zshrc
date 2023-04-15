@@ -9,14 +9,11 @@ unsetopt autocd beep extendedglob nomatch notify
  PATH=$PATH:~/.local/bin/
  PATH=$PATH:~/.local/nvim/bin
  PATH=$PATH:~/.cargo/bin
- PATH=$PATH:~/.config/nvim/gpt4_integration_plugin/
 
 export ZVM_VI_ESCAPE_BINDKEY='jk'
 
-
 # ZSH PLUGINS
 source ~/.antigen.zsh
-source ~/powerlevel10k/powerlevel10k.zsh-theme
 #ZSH PLUGINS END 
 
 # antigen zsh pkg manager:
