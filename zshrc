@@ -29,19 +29,19 @@ xmodmap ~/.Xmodmap
 
 # ALIASES
 alias grademe='bash -c "$(curl https://grademe.fr)"'
-alias ubunturun=" docker run -it --name my_ubuntu_container my_ubuntu_image"
-alias ubuntustart=" docker start my_ubuntu_container"
-alias dkeygen="docker run -v /path/to/ssh/keys:/root/.ssh my_ubuntu_image"
+alias ubunturun="sudo docker run -it --name my_ubuntu_container my_ubuntu_image"
+alias ubuntustart="sudo docker start my_ubuntu_container"
+alias dkeygen="sudo docker run -v /path/to/ssh/keys:/root/.ssh my_ubuntu_image"
 alias sshadd='eval "$(ssh-agent)" && ssh-add ~/.ssh/id_rs'
-alias ubuntu=" docker exec -it my_ubuntu_container /bin/zsh"
-alias ubuntustop=" docker stop my_ubuntu_container"
-alias ubuntudel=" docker rm my_ubuntu_container"
-alias dimagedel=" docker system prune -a --force --volumes"
+alias ubuntu="sudo docker exec -it my_ubuntu_container /bin/zsh"
+alias ubuntustop="sudo docker stop my_ubuntu_container"
+alias ubuntudel="sudo docker rm my_ubuntu_container"
+alias dimagedel="sudo docker system prune -a --force --volumes"
 alias xrdb="xrdb -merge ~/.Xresources"
 alias g="sed -i 's/-O3/-g/g' libs/**/Makefile Makefile"
 alias O3="sed -i 's/-g/-O3/g' libs/**/Makefile Makefile"
 alias callgrind="valgrind --tool=callgrind"
-alias vimbegood=' docker run -it --rm brandoncc/vim-be-good:stable'
+alias vimbegood='docker run -it --rm brandoncc/vim-be-good:stable'
 alias rec='simplescreenrecorder &'
 alias zshrc="nvim ~/.dotfiles/zshrc"
 alias valflags='valgrind --show-leak-kinds=all --track-origins=yes --trace-children=yes -q'
@@ -65,16 +65,16 @@ alias ls="exa"
 #ALIASES END
 
 #VINNIVIM ALIASES
-export P=~/.config/nvim/lua/user
-alias autocommands='nvim $P/autocommands.lua'
-alias keymaps='nvim $P/keymaps/general_use_keymaps.lua'
-alias colorscheme='nvim $P/colorscheme.lua'
-alias options='nvim $P/options.lua'
-alias plugins='nvim $P/plugins.lua' 
-alias transparency='nvim $P/transparent.lua'
-alias telescope='nvim $P/telescope.lua'
-alias dap='nvim $P/dap.lua'
-alias lsp='nvim $P/lsp/mason.lua'
+export P=~/.config/nvim/lua/
+alias autocommands='nvim $P/user/autocommands.lua'
+alias keymaps='nvim $P/user/keymaps/general_use_keymaps.lua'
+alias colorscheme='nvim $P/user/colorscheme.lua'
+alias options='nvim $P/core/options.lua'
+alias plugins='nvim $P/core/lazy.lua' 
+alias transparency='nvim $P/user/transparent.lua'
+alias telescope='nvim $P/user/telescope.lua'
+alias dap='nvim $P/user/dap.lua'
+alias lsp='nvim $P/user/lsp/mason.lua'
 #VINNIVIM ALIASES END
 
 # 42 header:
