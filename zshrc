@@ -5,6 +5,8 @@ PATH=$PATH:/root/.cargo/bin
 #PATHS END
 
 # ALIASES
+#
+alias n="nvim"
 alias g="sed -i 's/-O3/-g/g' libs/**/Makefile Makefile"
 alias O3="sed -i 's/-g/-O3/g' libs/**/Makefile Makefile"
 alias callgrind="valgrind --tool=callgrind"
