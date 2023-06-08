@@ -2,11 +2,13 @@
 PATH=$PATH:~/.local
 PATH=$PATH:~/.local/bin/
 PATH=$PATH:/root/.cargo/bin
-#PATHS END
+
+export PATH=$PATH:/usr/local/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 
 # ALIASES
-#
 alias n="nvim"
+alias grademe='bash -c "$(curl https://grademe.fr)"'
 alias g="sed -i 's/-O3/-g/g' libs/**/Makefile Makefile"
 alias O3="sed -i 's/-g/-O3/g' libs/**/Makefile Makefile"
 alias callgrind="valgrind --tool=callgrind"
