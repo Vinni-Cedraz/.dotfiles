@@ -1,22 +1,21 @@
-#!/usr/bin/zsh
+#!/usr/bin/bash
 
-# create .zshrc if it doesn't exist
-touch ~/.zshrc
+# create .config/fish/config.fish if it doesn't exist
+mkdir -p ~/.config/fish/
+touch ~/.config/fish/config.fish
 cp Xmodmap ~/.Xmodmap
 cp -r fonts ~/.
 mkdir -p ~/.config/wezterm
 ## remember to install the Iosevka Custom Extended font before you re-enter wezterm
 cp wezterm.lua ~/.config/wezterm/wezterm.lua
 xmodmap ~/.Xmodmap
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
 curl -L git.io/antigen-nightly > ~/.antigen.zsh
 
-# write shell configurations to .zshrc
-echo '# outsourcing my shell configurations directly from dotfiles repo:' >> ~/.zshrc
-echo 'if [ -f ~/.dotfiles/zshrc ]; then' >> ~/.zshrc
-echo '	source ~/.dotfiles/zshrc' >> ~/.zshrc
-echo 'else' >> ~/.zshrc
-echo '	print "404: shell configurations not found."' >> ~/.zshrc
-echo 'fi' >> ~/.zshrc
-echo '# outsourcing end;' >> ~/.zshrc
+# write shell configurations to .config/fish/config.fish
+echo '# outsourcing my shell configurations directly from dotfiles repo:' >> ~/.config/fish/config.fish
+echo 'if [ -f ~/.dotfiles/fishrc.fish ]; then' >> ~/.config/fish/config.fish
+echo '	source ~/.dotfiles/fishrc.fish' >> ~/.config/fish/config.fish
+echo 'else' >> ~/.config/fish/config.fish
+echo '	print "404: ~/.dotfiles/fishrc.fish (fish configurations) not found."' >> ~/.config/fish/config.fish
+echo 'fi' >> ~/.config/fish/config.fish
+echo '# outsourcing end;' >> ~/.config/fish/config.fish
