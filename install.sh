@@ -19,12 +19,15 @@ mkdir -p ~/.config/wezterm
 cp wezterm.lua ~/.config/wezterm/wezterm.lua
 xmodmap ~/.Xmodmap
 curl -L git.io/antigen-nightly > ~/.antigen.zsh
-## install oh-my-fish
+## install fish plugin managers
 curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+
 ## fix nvm for fish:
-omf install nvmomf install https://github.com/fabioantunes/fish-nvm
-omf install https://github.com/edc/bass
+fisher install FabioAntunes/fish-nvm edc/bass
 ## use node 16
+nvm install 16
+nvm use 16
 
 # write shell configurations to .config/fish/config.fish
 echo '# outsourcing my shell configurations directly from dotfiles repo:' >> ~/.config/fish/config.fish
