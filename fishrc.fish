@@ -8,6 +8,8 @@ set -x PATH $PATH ~/.local/bin/
 set -x PATH $PATH ~/.local/nvim/bin
 set -x PATH $PATH ~/.cargo/bin
 
+set -x NVM_DIR "$HOME/.config/nvm"
+
 # ALIASES
 alias n "nvim"
 alias grademe 'bash -c "(curl https://grademe.fr)"'
@@ -41,7 +43,6 @@ alias wezconfig 'nvim ~/.config/wezterm/wezterm.lua'
 alias git_editor 'git config --global core.editor "nvim"'
 alias s 'git status'
 alias lx "\ls -la"
-alias ls "exa"
 #ALIASES END
 
 #VINNIVIM ALIASES
@@ -61,4 +62,3 @@ alias lsp 'nvim $P/lsp/mason.lua'
 set -x USER 'vcedraz-'
 set -x MAIL 'vcedraz-@student.42sp.org.br'
 #42 header end;
-
