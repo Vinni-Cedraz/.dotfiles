@@ -21,12 +21,10 @@ xmodmap ~/.Xmodmap
 curl -L git.io/antigen-nightly > ~/.antigen.zsh
 ## install oh-my-fish
 curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
-## install nvm for fish:
+## fix nvm for fish:
 omf install nvmomf install https://github.com/fabioantunes/fish-nvm
 omf install https://github.com/edc/bass
 ## use node 16
-nvm install 16
-nvm use 16
 
 # write shell configurations to .config/fish/config.fish
 echo '# outsourcing my shell configurations directly from dotfiles repo:' >> ~/.config/fish/config.fish
