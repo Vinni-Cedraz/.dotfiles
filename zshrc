@@ -19,7 +19,7 @@ export ZVM_VI_ESCAPE_BINDKEY='jk'
 source ~/.antigen.zsh
 #ZSH PLUGINS END 
 
-# antigen zsh pkg manager:
+#antigen zsh pkg manager:
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle jeffreytse/zsh-vi-mode
 antigen bundle zsh-users/zsh-autosuggestions
@@ -32,6 +32,11 @@ xmodmap ~/.Xmodmap
 
 # ALIASES
 alias n="nvim"
+alias d="dmenu_run"
+alias c="git checkout"
+alias cB="git checkout -B"
+alias btJBL='echo "connect F8:AB:E5:8B:47:D6"'
+alias btKEY='echo "EE:62:88:32:17:34"'
 alias grademe='bash -c "$(curl https://grademe.fr)"'
 alias ubunturun="docker run -it --name my_ubuntu_container my_ubuntu_image"
 alias ubuntustart="docker start my_ubuntu_container"
