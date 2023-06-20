@@ -43,6 +43,7 @@ alias wezconfig 'nvim ~/.config/wezterm/wezterm.lua'
 alias git_editor 'git config --global core.editor "nvim"'
 alias s 'git status'
 alias lx "\ls -la"
+alias ls "exa --icons"
 #ALIASES END
 
 #VINNIVIM ALIASES

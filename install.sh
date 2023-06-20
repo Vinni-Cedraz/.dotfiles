@@ -12,7 +12,7 @@ mkdir -p ~/.config/wezterm
 cp wezterm.lua ~/.config/wezterm/wezterm.lua
 
 ## install fish plugin managers
-curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
+#curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 
 ## fix nvm for fish:
