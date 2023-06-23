@@ -20,9 +20,9 @@ alias n "nvim"
 alias grademe 'bash -c "(curl https://grademe.fr)"'
 alias ubunturun "sudo docker run -it --name my_ubuntu_container my_ubuntu_image"
 alias ubuntustart "sudo docker start my_ubuntu_container"
+alias ubuntu "sudo docker exec -it my_ubuntu_container zsh"
 alias dkeygen "docker run -v /path/to/ssh/keys:/root/.ssh my_ubuntu_image"
 alias sshadd 'eval "(ssh-agent)" && ssh-add ~/.ssh/id_rs'
-alias ubuntu "sudo docker exec -it my_ubuntu_container /bin/zsh"
 alias ubuntustop "sudo docker stop my_ubuntu_container"
 alias ubuntudel "sudo docker rm my_ubuntu_container"
 alias dimagedel "sudo docker system prune -a --force --volumes"
