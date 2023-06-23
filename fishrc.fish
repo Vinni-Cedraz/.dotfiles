@@ -2,13 +2,13 @@ set -x HISTFILE ~/.histfile
 set -x HISTSIZE 999999
 set -x SAVEHIST 999999
 set -Ua fish_opt_autocd fish_opt_beep fish_opt_extendedglob fish_opt_nomatch fish_opt_notify
-
 set -x PATH $PATH ~/.local
 set -x PATH $PATH ~/.local/bin/
 set -x PATH $PATH ~/.local/nvim/bin
 set -x PATH $PATH ~/.cargo/bin
-
+xmodmap ~/.Xmodmap
 set -x NVM_DIR "$HOME/.config/nvm"
+nvm use --silent 16
 
 # ALIASES
 alias n "nvim"
@@ -29,7 +29,7 @@ alias vimbegood 'sudo docker run -it --rm brandoncc/vim-be-good:stable'
 alias rec 'simplescreenrecorder &'
 alias fishrc "nvim ~/.dotfiles/fishrc.fish"
 alias valflags 'valgrind --track-origins=yes --trace-children=yes -q'
-alias valminish 'valgrind --track-origins=yes --trace-children=yes --leak-check=full --suppressions=readline.supp'
+alias valminishell 'valgrind --track-origins=yes --trace-children=yes --leak-check=full --suppressions=readline.supp -q'
 alias paths 'echo $PATH | sed "s/:/\n/g"'
 alias norminette 'norminette -R CheckForbiddenSourceHeader'
 alias red 'redshift &'
