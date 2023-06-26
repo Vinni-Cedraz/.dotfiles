@@ -8,6 +8,7 @@ test -z "$SAVEHIST"; and set -x SAVEHIST 999999
 string match -q "*:$HOME/.cargo/bin:*" ":$PATH:"; or set -x PATH $PATH ~/.cargo/bin
 string match -q "*:$HOME/.local/bin:*" ":$PATH:"; or set -x PATH $PATH ~/.local/bin
 string match -q "*:$HOME/.local/nvim/bin:*" ":$PATH:"; or set -x PATH $PATH ~/.local/nvim/bin
+string match -q "*:$HOME/.local/.local/share/nvim/mason/bin:*" ":$PATH:"; or set -x PATH $PATH ~/.local/share/nvim/mason/bin
 
 # SETTING UP OTHER THINGS
 test -z "$NVM_DIR"; and set -x NVM_DIR "$HOME/.config/nvm"
@@ -17,6 +18,7 @@ git config --global --add safe.directory $HOME/ubuntu_22.04_container
 
 # ALIASES
 alias n "nvim"
+alias jsmodule 'npm init -y && npx json -I -f package.json -e \'this.type="module"\' && cat package.json'
 alias grademe 'bash -c "(curl https://grademe.fr)"'
 alias ubunturun "sudo docker run -it --name my_ubuntu_container my_ubuntu_image"
 alias ubuntustart "sudo docker start my_ubuntu_container"
@@ -50,6 +52,11 @@ alias s 'git status'
 alias lx "\ls -la"
 alias ls "exa --icons"
 #ALIASES END
+
+# FUNCTIONS
+function getDownload; cp (fd -i -t f $argv[1] ~/Downloads) .; end
+function cleanDownload; rm (fd --full-path -i -t f $argv[1] ~/Downloads); end
+# FUNCTIONS END
 
 #VINNIVIM ALIASES
 set -x P ~/.config/nvim/lua/user
