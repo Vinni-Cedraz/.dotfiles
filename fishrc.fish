@@ -9,9 +9,10 @@ string match -q "*:$HOME/.cargo/bin:*" ":$PATH:"; or set -x PATH $PATH ~/.cargo/
 string match -q "*:$HOME/.local/bin:*" ":$PATH:"; or set -x PATH $PATH ~/.local/bin
 string match -q "*:$HOME/.local/nvim/bin:*" ":$PATH:"; or set -x PATH $PATH ~/.local/nvim/bin
 string match -q "*:$HOME/.local/.local/share/nvim/mason/bin:*" ":$PATH:"; or set -x PATH $PATH ~/.local/share/nvim/mason/bin
-string match -q "*:$HOME/.local/kitty.app/bin:*" ":$PATH:" ; or set -x PATH $PATH ~/.local/kitty.app/bin
+# string match -q "*:$HOME/.cmdline-tools/bin:*" ":$PATH:"; or set -x PATH $PATH ~/.cmdline-tools/bin
 
 # SETTING UP OTHER THINGS
+# test -z "$ANDROID_HOME"; and set -x ANDROID_HOME "$HOME/.cmdline-tools/bin"
 test -z "$NVM_DIR"; and set -x NVM_DIR "$HOME/.config/nvm"
 xmodmap ~/.Xmodmap
 # nvm use --silent 16
@@ -60,6 +61,7 @@ alias git_editor 'git config --global core.editor "nvim"'
 alias s 'git status'
 alias lx "\ls -la"
 alias ls "exa --icons"
+alias setbranch 'git push --set-upstream origin (git rev-parse --abbrev-ref HEAD)'
 #ALIASES END
 
 # FUNCTIONS
@@ -72,9 +74,9 @@ set -x N ~/.config/nvim/
 set -x P $N/lua/user
 alias autocommands 'nvim $P/autocommands.lua'
 alias keymaps 'nvim $P/keymaps/general_use_keymaps.lua'
-alias colorscheme 'nvim $P/colorscheme.lua'
+alias colorscheme 'nvim $N/lua/core/colorscheme.lua'
 alias options 'nvim $P/options.lua'
-alias plugins 'nvim $P/plugins.lua' 
+alias plugins 'nvim $N/lua/plugins/lazy.lua' 
 alias transparency 'nvim $P/transparent.lua'
 alias telescope 'nvim $P/telescope.lua'
 alias dap 'nvim $P/dap.lua'
