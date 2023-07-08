@@ -10,8 +10,6 @@ PATH=$PATH:~/.local/bin/
 PATH=$PATH:~/.local/nvim/bin
 PATH=$PATH:~/.cargo/bin
 PATH=$PATH:~/.local/share/nvim/mason/bin
-PATH=$PATH:/nfs/homes/vcedraz-/.local/wezterm/usr/bin
-PACKPATH=$PACKPATH:~/.local/share/nvim/site/pack/packer/start
 
 export ZVM_VI_ESCAPE_BINDKEY='jk'
 
@@ -42,7 +40,7 @@ alias ubunturun="docker run -it --name my_ubuntu_container my_ubuntu_image"
 alias ubuntustart="docker start my_ubuntu_container"
 alias dkeygen="docker run -v /path/to/ssh/keys:/root/.ssh my_ubuntu_image"
 alias sshadd='eval "$(ssh-agent)" && ssh-add ~/.ssh/id_rs'
-alias ubuntu="docker exec -it my_ubuntu_container /bin/zsh"
+alias ubuntu="docker exec -it my_ubuntu_container zsh"
 alias ubuntustop="docker stop my_ubuntu_container"
 alias ubuntudel="docker rm my_ubuntu_container"
 alias dimagedel="docker system prune -a --force --volumes"
@@ -69,6 +67,13 @@ alias s='git status'
 alias lx="\ls -la"
 alias ls="exa"
 #ALIASES END
+
+#FUNCTIONS
+setbranch() {
+  local branch=$(git rev-parse --abbrev-ref HEAD)
+  git push --set-upstream origin "$branch"
+}
+#FUNCTIONS END
 
 #VINNIVIM ALIASES
 export P=~/.config/nvim/lua/
