@@ -12,7 +12,7 @@ alias valsupp='valgrind --show-leak-kinds=all --track-origins=yes --leak-check=f
 alias grademe='bash -c "$(curl https://grademe.fr)"'
 alias g="sed -i 's/-O3/-g/g' libs/**/Makefile Makefile"
 alias O3="sed -i 's/-g/-O3/g' libs/**/Makefile Makefile"
-alias sshadd='eval "$(ssh-agent)" && ssh-add ~/.ssh/id_rs'
+alias sshadd='eval "$(ssh-agent)" && ssh-add ~/.ssh/id_rsa'
 alias zshrc="nvim ~/.dotfiles/zshrc"
 alias ls="exa --icons"
 alias lx="\ls -la"
