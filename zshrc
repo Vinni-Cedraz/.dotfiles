@@ -7,6 +7,13 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 # ENVIRONMENT VARIABLES END
 
+#FUNCTIONS
+setbranch() {
+  local branch=$(git rev-parse --abbrev-ref HEAD)
+  git push --set-upstream origin "$branch"
+}
+#FUNCTIONS END
+
 # ALIASES
 alias valflags='valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full -q'
 alias valsupp='valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full --suppressions=readline.supp -q'
@@ -24,7 +31,6 @@ alias norminette='norminette -R CheckForbiddenSourceHeader'
 alias s='git status'
 alias c='git checkout'
 alias cB='git checkout -B'
-alias setbranch="git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)"
 #ft_neovim aliases:
 alias n="nvim"
 export P=~/.config/nvim/lua #ft_neovim path
