@@ -24,11 +24,8 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen apply
 #antigen end
 
-# FIXED COMMANDS 
-xmodmap ~/.Xmodmap
-#FIXED COMMANDS END
-
 # ALIASES
+alias xmod="xmodmap ~/.Xmodmap"
 alias n="nvim"
 alias d="dmenu_run"
 alias c="git checkout"
@@ -65,7 +62,7 @@ alias wezconfig='nvim ~/.config/wezterm/wezterm.lua'
 alias git_editor='git config --global core.editor "nvim"'
 alias s='git status'
 alias lx="\ls -la"
-alias ls="exa"
+alias ls="exa --icons"
 #ALIASES END
 
 #FUNCTIONS
