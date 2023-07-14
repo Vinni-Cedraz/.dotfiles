@@ -63,8 +63,14 @@ alias git_editor='git config --global core.editor "nvim"'
 alias s='git status'
 alias lx="\ls -la"
 alias ls="exa --icons"
-alias setbranch="git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)"
 #ALIASES END
+
+#FUNCTIONS
+setbranch() {
+  local branch=$(git rev-parse --abbrev-ref HEAD)
+  git push --set-upstream origin "$branch"
+}
+#FUNCTIONS END
 
 #VINNIVIM ALIASES
 export P=~/.config/nvim/lua/
