@@ -20,9 +20,6 @@ alias lx="\ls -la"
 alias fd="fdfind"
 alias paths='echo $PATH | sed "s/:/\n/g"'
 alias norminette='norminette -R CheckForbiddenSourceHeader'
-alias drestart='sudo systemctl restart docker'
-alias btJBL='echo "connect F8:AB:E5:8B:47:D6"'
-alias btKEY='echo "EE:62:88:32:17:34"'
 # git aliases:
 alias s='git status'
 alias c='git checkout'
