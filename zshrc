@@ -1,13 +1,14 @@
+# ENVIRONMENT VARIABLES:
 PATH=$PATH:~/.local
 PATH=$PATH:~/.local/bin/
 PATH=$PATH:/root/.cargo/bin
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion#PATHS
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# ENVIRONMENT VARIABLES END
 
 # ALIASES
-# alias valflags='valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full -q'
+alias valflags='valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full -q'
 alias valsupp='valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full --suppressions=readline.supp -q'
 alias grademe='bash -c "$(curl https://grademe.fr)"'
 alias g="sed -i 's/-O3/-g/g' libs/**/Makefile Makefile"
@@ -20,13 +21,13 @@ alias fd="fdfind"
 alias paths='echo $PATH | sed "s/:/\n/g"'
 alias norminette='norminette -R CheckForbiddenSourceHeader'
 alias drestart='sudo systemctl restart docker'
-alias git_editor='git config --global core.editor "nvim"'
+alias btJBL='echo "connect F8:AB:E5:8B:47:D6"'
+alias btKEY='echo "EE:62:88:32:17:34"'
+# git aliases:
 alias s='git status'
 alias c='git checkout'
 alias cB='git checkout -B'
-alias btJBL='echo "connect F8:AB:E5:8B:47:D6"'
-alias btKEY='echo "EE:62:88:32:17:34"'
-
+alias setbranch="git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)"
 #ft_neovim aliases:
 alias n="nvim"
 export P=~/.config/nvim/lua #ft_neovim path
@@ -36,13 +37,10 @@ alias colorscheme='nvim $P/core/colorscheme.lua'
 alias options='nvim $P/user/options.lua'
 alias plugins='nvim $P/plugins/lazy.lua' 
 alias lsp='nvim $P/user/lsp/mason.lua'
-#ft_neovim aliases end
 #ALIASES END
 
-#git settings
-git_editor # set default git_editor
-git config --global user.name "Vinni-Cedraz"
-git config --global user.email "Vinni.vcr@gmail.com"
+#git settings 
+git config --global core.editor "nvim"
 #git settings end
 
 # zsh macros
