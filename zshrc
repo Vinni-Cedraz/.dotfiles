@@ -15,6 +15,7 @@ setbranch() {
 #FUNCTIONS END
 
 # ALIASES
+alias getssh="cat ~/.ssh/id_rsa.pub"
 alias valflags='valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full -q'
 alias valsupp='valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full --suppressions=readline.supp -q'
 alias grademe='bash -c "$(curl https://grademe.fr)"'
