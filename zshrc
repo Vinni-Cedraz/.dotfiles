@@ -5,19 +5,22 @@ PATH=$PATH:/root/.cargo/bin
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export $(dbus-launch)
 # ENVIRONMENT VARIABLES END
 
+#git settings 
+git config --global core.editor "nvim"
+#git settings end
+
 #FUNCTIONS
-setbranch() {
+setbranch_function() {
   local branch=$(git rev-parse --abbrev-ref HEAD)
   git push --set-upstream origin "$branch"
-}
-#FUNCTIONS END
+} 									#FUNCTIONS END
+
 
 # ALIASES
 alias getssh="cat ~/.ssh/id_rsa.pub"
-alias valflags='valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full -q'
-alias valsupp='valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full --suppressions=readline.supp -q'
 alias grademe='bash -c "$(curl https://grademe.fr)"'
 alias g="sed -i 's/-O3/-g/g' libs/**/Makefile Makefile"
 alias O3="sed -i 's/-g/-O3/g' libs/**/Makefile Makefile"
@@ -28,10 +31,14 @@ alias lx="\ls -la"
 alias fd="fdfind"
 alias paths='echo $PATH | sed "s/:/\n/g"'
 alias norminette='norminette -R CheckForbiddenSourceHeader'
+# valgrind aliases:
+alias valflags='valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full -q'
+alias valsupp='valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full --suppressions=readline.supp -q'
 # git aliases:
 alias s='git status'
 alias c='git checkout'
 alias cB='git checkout -B'
+alias setbranch="setbranch_function"
 #ft_neovim aliases:
 alias n="nvim"
 export P=~/.config/nvim/lua #ft_neovim path
@@ -42,10 +49,6 @@ alias options='nvim $P/user/options.lua'
 alias plugins='nvim $P/plugins/lazy.lua' 
 alias lsp='nvim $P/user/lsp/mason.lua'
 #ALIASES END
-
-#git settings 
-git config --global core.editor "nvim"
-#git settings end
 
 # zsh macros
 HISTFILE=~/.histfile
