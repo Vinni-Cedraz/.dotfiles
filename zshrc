@@ -18,7 +18,6 @@ setbranch_function() {
   git push --set-upstream origin "$branch"
 } 									#FUNCTIONS END
 
-
 # ALIASES
 alias getssh="cat ~/.ssh/id_rsa.pub"
 alias grademe='bash -c "$(curl https://grademe.fr)"'
@@ -31,14 +30,15 @@ alias lx="\ls -la"
 alias fd="fdfind"
 alias paths='echo $PATH | sed "s/:/\n/g"'
 alias norminette='norminette -R CheckForbiddenSourceHeader'
-# valgrind aliases:
-alias valflags='valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full -q'
-alias valsupp='valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full --suppressions=readline.supp -q'
 # git aliases:
 alias s='git status'
 alias c='git checkout'
 alias cB='git checkout -B'
 alias setbranch="setbranch_function"
+# valgrind aliases:
+alias valflags='valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full -q'
+alias valsupp='valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full --suppressions=readline.supp -q'
+alias callgrind="valgrind --tool=callgrind --callgrind-out-file=callgrind.out"
 #ft_neovim aliases:
 alias n="nvim"
 export P=~/.config/nvim/lua #ft_neovim path
