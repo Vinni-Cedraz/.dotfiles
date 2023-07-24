@@ -35,6 +35,8 @@ alias s='git status'
 alias c='git checkout'
 alias cB='git checkout -B'
 alias setbranch="setbranch_function"
+alias setuser="git config --global user.name \"Vinni-Cedraz\""
+alias setmail="git config --global user.mail \"planetexpress0101@gmail.com\""
 # valgrind aliases:
 alias valflags='valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full -q'
 alias valsupp='valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full --suppressions=readline.supp -q'
