@@ -19,7 +19,8 @@ setbranch_function() {
 } 									#FUNCTIONS END
 
 # ALIASES
-alias getssh="cat ~/.ssh/id_rsa.pub"
+
+alias make="compiledb make"
 alias grademe='bash -c "$(curl https://grademe.fr)"'
 alias g="sed -i 's/-O3/-g/g' libs/**/Makefile Makefile"
 alias O3="sed -i 's/-g/-O3/g' libs/**/Makefile Makefile"
