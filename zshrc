@@ -5,13 +5,14 @@ SAVEHIST=999999
 unsetopt autocd beep extendedglob nomatch notify
 # End of lines configured by zsh-newuser-install
 
+# paths
 PATH=$PATH:~/.local
 PATH=$PATH:~/.local/bin/
+PATH=$PATH:~/.wezterm/bin
 PATH=$PATH:~/.local/nvim/bin
 PATH=$PATH:~/.cargo/bin
 PATH=$PATH:~/.local/share/nvim/mason/bin
-
-export ZVM_VI_ESCAPE_BINDKEY='jk'
+# paths end
 
 # ZSH PLUGINS
 source ~/.antigen.zsh
@@ -22,9 +23,17 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle jeffreytse/zsh-vi-mode
 antigen bundle zsh-users/zsh-autosuggestions
 antigen apply
+export ZVM_VI_ESCAPE_BINDKEY='jk'
 #antigen end
 
+# allowing display inside docker containers
+xhost +local:docker
+# display end
+
+git config --global core.editor "nvim"
+
 # ALIASES
+alias kconf="nvim ~/.config/kitty/kitty.conf"
 alias xmod="xmodmap ~/.Xmodmap"
 alias n="nvim"
 alias d="dmenu_run"
@@ -59,7 +68,6 @@ alias denable='systemctl enable docker' #pra rodar o docker quando o sistema ini
 alias drestart=' systemctl restart docker'
 alias tree='tre'
 alias wezconfig='nvim ~/.config/wezterm/wezterm.lua'
-alias git_editor='git config --global core.editor "nvim"'
 alias s='git status'
 alias lx="\ls -la"
 alias ls="exa --icons"
