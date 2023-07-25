@@ -15,8 +15,8 @@ string match -q "*:$HOME/.local/.local/share/nvim/mason/bin:*" ":$PATH:"; or set
 # test -z "$ANDROID_HOME"; and set -x ANDROID_HOME "$HOME/.cmdline-tools/bin"
 test -z "$NVM_DIR"; and set -x NVM_DIR "$HOME/.config/nvm"
 xmodmap ~/.Xmodmap
-# nvm use --silent 16
 git config --global --add safe.directory $HOME/ubuntu_22.04_container
+xhost +local:docker
 
 # ALIASES
 alias btJBL 'echo "connect F8:AB:E5:8B:47:D6"'
