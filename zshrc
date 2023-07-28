@@ -58,7 +58,7 @@ HISTFILE=~/.histfile
 HISTSIZE=999999
 SAVEHIST=999999
 unsetopt autocd beep extendedglob nomatch notify
-export ZVM_VI_ESCAPE_BINDKEY='jk'
+# export ZVM_VI_ESCAPE_BINDKEY='jk'
 # End of zsh macros
 
 # 42 header:
@@ -69,11 +69,18 @@ export MAIL='vcedraz-@student.42sp.org.br'
 # antigen (zsh plugin manager)
 source ~/.antigen.zsh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-antigen bundle jeffreytse/zsh-vi-mode
-antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-autosuggestions
 antigen apply
 #antigen end
+
+# Set Zsh's keymap to Vi-mode
+bindkey -v
+
+# Bind "jk" sequence to switch to normal (command) mode
+autoload -Uz vi-cmd-mode
+zle -N vi-cmd-mode
+bindkey -M viins 'jk' vi-cmd-mode
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
