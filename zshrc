@@ -5,7 +5,9 @@ PATH=$PATH:/root/.cargo/bin
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 export $(dbus-launch)
+
 # ENVIRONMENT VARIABLES END
 
 #git settings 
@@ -77,10 +79,21 @@ antigen apply
 # Set Zsh's keymap to Vi-mode
 bindkey -v
 
-# Bind "jk" sequence to switch to normal (command) mode
-autoload -Uz vi-cmd-mode
-zle -N vi-cmd-mode
+# Bind "jk" to switch to normal (command) mode
+function zle-line-init zle-keymap-select {
+    if [[ $KEYMAP == vicmd ]]; then
+        bindkey -M vicmd 'jk' vi-cmd-mode
+    else
+        bindkey -M viins 'jk' vi-cmd-mode
+    fi
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+# Map "jk" to execute the vi-cmd-mode function
 bindkey -M viins 'jk' vi-cmd-mode
+
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
