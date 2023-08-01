@@ -10,12 +10,12 @@ string match -q "*:$HOME/.local/bin:*" ":$PATH:"; or set -x PATH $PATH ~/.local/
 string match -q "*:$HOME/.local/nvim/bin:*" ":$PATH:"; or set -x PATH $PATH ~/.local/nvim/bin
 string match -q "*:$HOME/.local/.local/share/nvim/mason/bin:*" ":$PATH:"; or set -x PATH $PATH ~/.local/share/nvim/mason/bin
 string match -q "*:$HOME/.local/cmdline-tools/bin:*" ":$PATH:"; or set -x PATH $PATH ~/.local/cmdline-tools/bin
-string match -q "*:$HOME/.local/jdk-17.0.8+7/bin/emulator*" ":$PATH:"; or set -x PATH $PATH ~/.local/jdk-17.0.8+7/bin/emulator
 string match -q "*:$HOME/.local/jdk-17.0.8+7/bin*" ":$PATH:"; or set -x PATH $PATH ~/.local/jdk-17.0.8+7/bin/
+string match -q "*:$HOME/.local/jdk-17.0.8+7/bin/emulator*" ":$PATH:"; or set -x PATH $PATH ~/.local/jdk-17.0.8+7/bin/emulator
 
 # SETTING UP OTHER THINGS
-test -z "$ANDROID_HOME"; and set -x ANDROID_HOME "$HOME/.android"
-test -z "$ANDROID_SDK_ROOT"; and set -x ANDROID_SDK_ROOT "$HOME/.cmdline-tools/bin/"
+test -z "$ANDROID_SDK_HOME"; and set -x ANDROID_SDK_HOME "~/.local/jdk-17.0.8+7/bin/"
+test -z "$ANDROID_SDK_ROOT"; and set -x ANDROID_SDK_ROOT "$HOME/.local/cmdline-tools/bin/"
 test -z "$NVM_DIR"; and set -x NVM_DIR "$HOME/.config/nvm"
 xmodmap ~/.Xmodmap
 git config --global --add safe.directory $HOME/ubuntu_22.04_container
@@ -24,6 +24,7 @@ git config --global --add safe.directory $HOME/ubuntu_22.04_container
 # ALIASES
 alias btJBL 'echo "connect F8:AB:E5:8B:47:D6"'
 alias btKEY 'echo "EE:62:88:32:17:34"'
+alias xmod 'xmodmap ~/.Xmodmap'
 alias n "nvim"
 alias c "git checkout"
 alias d "dmenu_run"
@@ -33,14 +34,14 @@ alias dB "git branch -D"
 alias kconf "n ~/.config/kitty/kitty.conf"
 alias jsmodule 'npm init -y && npx json -I -f package.json -e \'this.type="module"\' && cat package.json'
 alias grademe 'bash -c "(curl https://grademe.fr)"'
-alias ubunturun "sudo docker run -it --name my_ubuntu_container my_ubuntu_image"
-alias ubuntustart "sudo docker start my_ubuntu_container"
-alias ubuntu "sudo docker exec -it my_ubuntu_container zsh"
+alias ubunturun "docker run -it --name my_ubuntu_container my_ubuntu_image"
+alias ubuntustart "docker start my_ubuntu_container"
+alias ubuntu "docker exec -it my_ubuntu_container zsh"
 alias dkeygen "docker run -v /path/to/ssh/keys:/root/.ssh my_ubuntu_image"
 alias sshadd 'eval "(ssh-agent)" && ssh-add ~/.ssh/id_rs'
-alias ubuntustop "sudo docker stop my_ubuntu_container"
-alias ubuntudel "sudo docker rm my_ubuntu_container"
-alias dimagedel "sudo docker system prune -a --force --volumes"
+alias ubuntustop "docker stop my_ubuntu_container"
+alias ubuntudel "docker rm my_ubuntu_container"
+alias dimagedel "docker system prune -a --force --volumes"
 alias xrdb "xrdb -merge ~/.Xresources"
 alias g "sed -i 's/-O3/-g/g' lib/**/Makefile Makefile"
 alias O3 "sed -i 's/-g/-O3/g' lib/**/Makefile Makefile"
@@ -49,7 +50,7 @@ alias vimbegood 'docker run -it --rm brandoncc/vim-be-good:stable'
 alias rec 'simplescreenrecorder &'
 alias fishrc "nvim ~/.dotfiles/fishrc.fish"
 alias valflags 'valgrind --track-origins=yes --trace-children=yes -q'
-alias valminishell 'valgrind --track-origins=yes --trace-children=yes --leak-check=full --suppressions=readline.supp -q'
+alias valsupp='valgrind --leak-check=full --show-leak-kinds=all --trace-children=yes --suppressions=readline.supp --track-fds=yes --track-origins=yes --trace-children-skip="*/bin/*" -q'
 alias paths 'echo $PATH | sed "s/ /\n/g"'
 alias norminette 'norminette -R CheckForbiddenSourceHeader'
 alias red 'redshift &'
