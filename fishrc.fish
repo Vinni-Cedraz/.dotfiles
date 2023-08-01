@@ -9,14 +9,17 @@ string match -q "*:$HOME/.cargo/bin:*" ":$PATH:"; or set -x PATH $PATH ~/.cargo/
 string match -q "*:$HOME/.local/bin:*" ":$PATH:"; or set -x PATH $PATH ~/.local/bin
 string match -q "*:$HOME/.local/nvim/bin:*" ":$PATH:"; or set -x PATH $PATH ~/.local/nvim/bin
 string match -q "*:$HOME/.local/.local/share/nvim/mason/bin:*" ":$PATH:"; or set -x PATH $PATH ~/.local/share/nvim/mason/bin
-# string match -q "*:$HOME/.cmdline-tools/bin:*" ":$PATH:"; or set -x PATH $PATH ~/.cmdline-tools/bin
+string match -q "*:$HOME/.local/cmdline-tools/bin:*" ":$PATH:"; or set -x PATH $PATH ~/.local/cmdline-tools/bin
+string match -q "*:$HOME/.local/jdk-17.0.8+7/bin/emulator*" ":$PATH:"; or set -x PATH $PATH ~/.local/jdk-17.0.8+7/bin/emulator
+string match -q "*:$HOME/.local/jdk-17.0.8+7/bin*" ":$PATH:"; or set -x PATH $PATH ~/.local/jdk-17.0.8+7/bin/
 
 # SETTING UP OTHER THINGS
-# test -z "$ANDROID_HOME"; and set -x ANDROID_HOME "$HOME/.cmdline-tools/bin"
+test -z "$ANDROID_HOME"; and set -x ANDROID_HOME "$HOME/.android"
+test -z "$ANDROID_SDK_ROOT"; and set -x ANDROID_SDK_ROOT "$HOME/.cmdline-tools/bin/"
 test -z "$NVM_DIR"; and set -x NVM_DIR "$HOME/.config/nvm"
 xmodmap ~/.Xmodmap
 git config --global --add safe.directory $HOME/ubuntu_22.04_container
-xhost +local:docker
+# xhost +local:docker
 
 # ALIASES
 alias btJBL 'echo "connect F8:AB:E5:8B:47:D6"'
