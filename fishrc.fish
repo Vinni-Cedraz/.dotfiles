@@ -22,7 +22,7 @@ xmodmap ~/.Xmodmap
 git config --global --add safe.directory $HOME/ubuntu_22.04_container
 git config --global user.name "Vinni-Cedraz"
 git config --global user.email "planetexpress0101@gmail.com"
-# xhost +local:docker
+xhost +local:docker
 
 # ALIASES
 alias btJBL 'echo "connect F8:AB:E5:8B:47:D6"'
@@ -37,14 +37,14 @@ alias dB "git branch -D"
 alias kconf "n ~/.config/kitty/kitty.conf"
 alias jsmodule 'npm init -y && npx json -I -f package.json -e \'this.type="module"\' && cat package.json'
 alias grademe 'bash -c "(curl https://grademe.fr)"'
-alias ubunturun "docker run -it --name my_ubuntu_container my_ubuntu_image"
-alias ubuntustart "docker start my_ubuntu_container"
-alias ubuntu "docker exec -it my_ubuntu_container zsh"
-alias dkeygen "docker run -v /path/to/ssh/keys:/root/.ssh my_ubuntu_image"
+alias ubunturun "sudo docker run -it --name my_ubuntu_container my_ubuntu_image"
+alias ubuntustart "sudo docker start my_ubuntu_container"
+alias ubuntu "sudo docker exec -it my_ubuntu_container zsh"
+alias dkeygen "sudo docker run -v /path/to/ssh/keys:/root/.ssh my_ubuntu_image"
 alias sshadd 'eval "(ssh-agent)" && ssh-add ~/.ssh/id_rs'
-alias ubuntustop "docker stop my_ubuntu_container"
-alias ubuntudel "docker rm my_ubuntu_container"
-alias dimagedel "docker system prune -a --force --volumes"
+alias ubuntustop "sudo docker stop my_ubuntu_container"
+alias ubuntudel "sudo docker rm my_ubuntu_container"
+alias dimagedel "sudo docker system prune -a --force --volumes"
 alias xrdb "xrdb -merge ~/.Xresources"
 alias g "sed -i 's/-O3/-g/g' lib/**/Makefile Makefile"
 alias O3 "sed -i 's/-g/-O3/g' lib/**/Makefile Makefile"
