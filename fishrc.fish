@@ -5,17 +5,18 @@ test -z "$HISTSIZE"; and set -x HISTSIZE 999999
 test -z "$SAVEHIST"; and set -x SAVEHIST 999999
 
 # ADD CUSTOM PATHS
-string match -q "*:$HOME/.cargo/bin:*" ":$PATH:"; or set -x PATH $PATH ~/.cargo/bin
-string match -q "*:$HOME/.local/bin:*" ":$PATH:"; or set -x PATH $PATH ~/.local/bin
-string match -q "*:$HOME/.local/nvim/bin:*" ":$PATH:"; or set -x PATH $PATH ~/.local/nvim/bin
-string match -q "*:$HOME/.local/.local/share/nvim/mason/bin:*" ":$PATH:"; or set -x PATH $PATH ~/.local/share/nvim/mason/bin
-string match -q "*:$HOME/.local/cmdline-tools/bin:*" ":$PATH:"; or set -x PATH $PATH ~/.local/cmdline-tools/bin
-string match -q "*:$HOME/.local/jdk-17.0.8+7/bin*" ":$PATH:"; or set -x PATH $PATH ~/.local/jdk-17.0.8+7/bin/
-string match -q "*:$HOME/.local/jdk-17.0.8+7/bin/emulator*" ":$PATH:"; or set -x PATH $PATH ~/.local/jdk-17.0.8+7/bin/emulator
+contains "*:$HOME/.cargo/bin:*" $fish_user_paths; or set -Ua PATH $PATH ~/.cargo/bin
+contains "*:$HOME/.local/bin:*" $fish_user_paths; or set -Ua PATH $PATH ~/.local/bin
+contains "*:$HOME/.local/nvim/bin:*" $fish_user_paths; or set -Ua PATH $PATH ~/.local/nvim/bin
+contains "*:$HOME/.local/.local/share/nvim/mason/bin:*" $fish_user_paths; or set -Ua PATH $PATH ~/.local/share/nvim/mason/bin
+contains "*:$HOME/.cmdline-tools/latest/bin:*" $fish_user_paths; or set -Ua PATH $PATH ~/.cmdline-tools/latest/bin
+contains "*:$HOME/.local/jdk-17.0.8+7/bin*" $fish_user_paths; or set -Ua PATH $PATH ~/.local/jdk-17.0.8+7/bin/
+contains "*:$HOME/.local/jdk-17.0.8+7/bin/emulator*" $fish_user_paths; or set -Ua PATH $PATH ~/.local/jdk-17.0.8+7/bin/emulator
 
 # SETTING UP OTHER THINGS
-test -z "$ANDROID_SDK_HOME"; and set -x ANDROID_SDK_HOME "~/.local/jdk-17.0.8+7/bin/"
-test -z "$ANDROID_SDK_ROOT"; and set -x ANDROID_SDK_ROOT "$HOME/.local/cmdline-tools/bin/"
+test -z "$ANDROID_SDK_HOME"; and set -x ANDROID_SDK_HOME "~/.cmdline-tools/latest"
+test -z "$ANDROID_SDK_ROOT"; and set -x ANDROID_SDK_ROOT "$HOME/.cmdline-tools/latest"
+test  "$JAVA_HOME"; and set -x JAVA_HOME "$HOME/.local/jdk-17.0.8+7"
 test -z "$NVM_DIR"; and set -x NVM_DIR "$HOME/.config/nvm"
 xmodmap ~/.Xmodmap
 git config --global --add safe.directory $HOME/ubuntu_22.04_container
@@ -69,8 +70,12 @@ alias setbranch 'git push --set-upstream origin (git rev-parse --abbrev-ref HEAD
 #ALIASES END
 
 # FUNCTIONS
-function getDownload; cp (fd -i -t f $argv[1] ~/Downloads) .; end
-function cleanDownload; rm (fd --full-path -i -t f $argv[1] ~/Downloads); end
+function getDownload;
+	cp (fd -i -t f $argv[1] ~/Downloads) .;
+end
+function cleanDownload;
+	rm (fd --full-path -i -t f $argv[1] ~/Downloads);
+end
 # FUNCTIONS END
 
 #VINNIVIM ALIASES
