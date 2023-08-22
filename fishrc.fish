@@ -20,6 +20,8 @@ test  "$JAVA_HOME"; and set -x JAVA_HOME "$HOME/.local/jdk-17.0.8+7"
 test -z "$NVM_DIR"; and set -x NVM_DIR "$HOME/.config/nvm"
 xmodmap ~/.Xmodmap
 git config --global --add safe.directory $HOME/ubuntu_22.04_container
+git config --global user.name "Vinni-Cedraz"
+git config --global user.email "planetexpress0101@gmail.com"
 # xhost +local:docker
 
 # ALIASES
