@@ -5,13 +5,11 @@ test -z "$HISTSIZE"; and set -x HISTSIZE 999999
 test -z "$SAVEHIST"; and set -x SAVEHIST 999999
 
 # ADD CUSTOM PATHS
-contains "*:$HOME/.cargo/bin:*" $fish_user_paths; or set -Ua PATH $PATH ~/.cargo/bin
-contains "*:$HOME/.local/bin:*" $fish_user_paths; or set -Ua PATH $PATH ~/.local/bin
-contains "*:$HOME/.local/nvim/bin:*" $fish_user_paths; or set -Ua PATH $PATH ~/.local/nvim/bin
-contains "*:$HOME/.local/.local/share/nvim/mason/bin:*" $fish_user_paths; or set -Ua PATH $PATH ~/.local/share/nvim/mason/bin
-contains "*:$HOME/.cmdline-tools/latest/bin:*" $fish_user_paths; or set -Ua PATH $PATH ~/.cmdline-tools/latest/bin
-contains "*:$HOME/.local/jdk-17.0.8+7/bin*" $fish_user_paths; or set -Ua PATH $PATH ~/.local/jdk-17.0.8+7/bin/
-contains "*:$HOME/.local/jdk-17.0.8+7/bin/emulator*" $fish_user_paths; or set -Ua PATH $PATH ~/.local/jdk-17.0.8+7/bin/emulator
+fish_add_path -g ~/.cargo/bin
+fish_add_path -g ~/.local/share/nvim/mason/bin
+fish_add_path -g ~/.cmdline-tools/latest/bin
+fish_add_path -g ~/.local/jdk-17.0.8+7/bin/
+fish_add_path -g ~/.local/jdk-17.0.8+7/bin/emulator
 
 # SETTING UP OTHER THINGS
 test -z "$ANDROID_SDK_HOME"; and set -x ANDROID_SDK_HOME "~/.cmdline-tools/latest"
@@ -37,6 +35,7 @@ alias d "dmenu_run"
 alias k "kitty"
 alias cB "git checkout -B"
 alias dB "git branch -D"
+alias tree "tre"
 alias kconf "n ~/.config/kitty/kitty.conf"
 alias jsmodule 'npm init -y && npx json -I -f package.json -e \'this.type="module"\' && cat package.json'
 alias grademe 'bash -c "(curl https://grademe.fr)"'
@@ -49,8 +48,9 @@ alias ubuntustop "sudo docker stop my_ubuntu_container"
 alias ubuntudel "sudo docker rm my_ubuntu_container"
 alias dimagedel "sudo docker system prune -a --force --volumes"
 alias xrdb "xrdb -merge ~/.Xresources"
-alias g "sed -i 's/-O3/-g/g' lib/**/Makefile Makefile"
-alias O3 "sed -i 's/-g/-O3/g' lib/**/Makefile Makefile"
+alias g "find . -name 'Makefile' -exec sed -i 's/-O3/-g/g' {} +"
+alias g3 "find . -name 'Makefile' -exec sed -i 's/-g/-g3/g' {} +"
+alias O3 "find . -name 'Makefile' -exec sed -i 's/-g/-O3/g' {} +"
 alias callgrind "valgrind --tool=callgrind"
 alias vimbegood 'docker run -it --rm brandoncc/vim-be-good:stable'
 alias rec 'simplescreenrecorder &'
