@@ -18,7 +18,7 @@ test -z "$ANDROID_SDK_HOME"; and set -x ANDROID_SDK_HOME "~/.cmdline-tools/lates
 test -z "$ANDROID_SDK_ROOT"; and set -x ANDROID_SDK_ROOT "$HOME/.cmdline-tools/latest"
 test  "$JAVA_HOME"; and set -x JAVA_HOME "$HOME/.local/jdk-17.0.8+7"
 test -z "$NVM_DIR"; and set -x NVM_DIR "$HOME/.config/nvm"
-xmodmap ~/.Xmodmap
+# xmodmap ~/.Xmodmap
 git config --global --add safe.directory $HOME/ubuntu_22.04_container
 git config --global user.name "Vinni-Cedraz"
 git config --global user.email "planetexpress0101@gmail.com"
