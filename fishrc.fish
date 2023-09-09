@@ -5,13 +5,13 @@ test -z "$HISTSIZE"; and set -x HISTSIZE 999999
 test -z "$SAVEHIST"; and set -x SAVEHIST 999999
 
 # ADD CUSTOM PATHS
-contains "*:$HOME/.cargo/bin:*" $fish_user_paths; or set -Ua PATH $PATH ~/.cargo/bin
-contains "*:$HOME/.local/bin:*" $fish_user_paths; or set -Ua PATH $PATH ~/.local/bin
-contains "*:$HOME/.local/nvim/bin:*" $fish_user_paths; or set -Ua PATH $PATH ~/.local/nvim/bin
-contains "*:$HOME/.local/.local/share/nvim/mason/bin:*" $fish_user_paths; or set -Ua PATH $PATH ~/.local/share/nvim/mason/bin
-contains "*:$HOME/.cmdline-tools/latest/bin:*" $fish_user_paths; or set -Ua PATH $PATH ~/.cmdline-tools/latest/bin
-contains "*:$HOME/.local/jdk-17.0.8+7/bin*" $fish_user_paths; or set -Ua PATH $PATH ~/.local/jdk-17.0.8+7/bin/
-contains "*:$HOME/.local/jdk-17.0.8+7/bin/emulator*" $fish_user_paths; or set -Ua PATH $PATH ~/.local/jdk-17.0.8+7/bin/emulator
+fish_add_path "~/.cargo/bin"
+fish_add_path "~/.local/bin"
+fish_add_path "~/.local/nvim/bin"
+fish_add_path "~/.local/share/nvim/mason/bin"
+fish_add_path "~/.cmdline-tools/latest/bin"
+fish_add_path "~/.local/jdk-17.0.8+7/bin/"
+fish_add_path "~/.local/jdk-17.0.8+7/bin/emulator"
 
 # SETTING UP OTHER THINGS
 test -z "$ANDROID_SDK_HOME"; and set -x ANDROID_SDK_HOME "~/.cmdline-tools/latest"
