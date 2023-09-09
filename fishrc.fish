@@ -1,3 +1,4 @@
+
 # SETTING UP THE FISH SHELL
 set -Ua fish_opt_autocd fish_opt_beep fish_opt_extendedglob fish_opt_nomatch fish_opt_notify
 test -e ~/.histfile; or set -x HISTFILE ~/.histfile
@@ -5,27 +6,29 @@ test -z "$HISTSIZE"; and set -x HISTSIZE 999999
 test -z "$SAVEHIST"; and set -x SAVEHIST 999999
 
 # ADD CUSTOM PATHS
-fish_add_path "~/.cargo/bin"
-fish_add_path "~/.local/bin"
-fish_add_path "~/.local/nvim/bin"
-fish_add_path "~/.local/share/nvim/mason/bin"
-fish_add_path "~/.cmdline-tools/latest/bin"
-fish_add_path "~/.local/jdk-17.0.8+7/bin/"
-fish_add_path "~/.local/jdk-17.0.8+7/bin/emulator"
+set PATH "$HOME/.local/bin:$PATH"
+set PATH "$PATH:$HOME/.cargo/bin"
+set PATH "$PATH:$HOME/.local/nvim/bin"
+set PATH "$PATH:$HOME/.local/share/nvim/mason/bin"
+set PATH "$PATH:$HOME/.cmdline-tools/latest/bin"
+set PATH "$PATH:$HOME/.local/jdk-17.0.8+7/bin/"
+set PATH "$PATH:$HOME/.local/jdk-17.0.8+7/bin/emulator"
 
-# SETTING UP OTHER THINGS
+# SETTING UP OTH$HOMER THINGS
 test -z "$ANDROID_SDK_HOME"; and set -x ANDROID_SDK_HOME "~/.cmdline-tools/latest"
 test -z "$ANDROID_SDK_ROOT"; and set -x ANDROID_SDK_ROOT "$HOME/.cmdline-tools/latest"
 test  "$JAVA_HOME"; and set -x JAVA_HOME "$HOME/.local/jdk-17.0.8+7"
 test -z "$NVM_DIR"; and set -x NVM_DIR "$HOME/.config/nvm"
+
 # xmodmap ~/.Xmodmap
 git config --global --add safe.directory $HOME/ubuntu_22.04_container
 git config --global user.name "Vinni-Cedraz"
 git config --global user.email "planetexpress0101@gmail.com"
 git config --global core.editor "nvim"
-xhost +local:docker
 
 # ALIASES
+alias gimp "flatpak run org.gimp.GIMP"
+alias hex 'flatpak run io.github.Hexchat'
 alias btJBL 'echo "connect F8:AB:E5:8B:47:D6"'
 alias btKEY 'echo "EE:62:88:32:17:34"'
 alias xmod 'xmodmap ~/.Xmodmap'
@@ -38,9 +41,9 @@ alias dB "git branch -D"
 alias kconf "n ~/.config/kitty/kitty.conf"
 alias jsmodule 'npm init -y && npx json -I -f package.json -e \'this.type="module"\' && cat package.json'
 alias grademe 'bash -c "(curl https://grademe.fr)"'
+alias ubuntu "xhost +local:docker && docker exec -it my_ubuntu_container zsh"
 alias ubunturun "docker run -it --name my_ubuntu_container my_ubuntu_image"
 alias ubuntustart "docker start my_ubuntu_container"
-alias ubuntu "docker exec -it my_ubuntu_container zsh"
 alias dkeygen "docker run -v /path/to/ssh/keys:/root/.ssh my_ubuntu_image"
 alias sshadd 'eval "(ssh-agent)" && ssh-add ~/.ssh/id_rs'
 alias ubuntustop "docker stop my_ubuntu_container"
@@ -68,7 +71,7 @@ alias wezconfig 'nvim ~/.config/wezterm/wezterm.lua'
 alias s 'git status'
 alias lx "\ls -la"
 alias ls "exa --icons"
-alias setbranch 'git push --set-upstream origin (git rev-parse --abbrev-ref HEAD)'
+alias setbranch 'git add . && git commit -m "setbranch" && git push --set-upstream origin (git rev-parse --abbrev-ref HEAD)'
 #ALIASES END
 
 # FUNCTIONS
@@ -77,6 +80,16 @@ function getDownload;
 end
 function cleanDownload;
 	rm (fd --full-path -i -t f $argv[1] ~/Downloads);
+end
+
+function setvogs
+    if test -z "$argv[1]"; echo "Usage: create_vogsphere_branch <vogsphere_url>"; return 1; end
+    git remote add vogsphere $argv[1]
+    git checkout -b to_vogsphere
+	fd -e c -e h -e Makefile -x rm -f
+	# fd -t d -E include -E includes -E lib -E libs -E src -E srcs -x rm -rf
+    setbranch
+    git push vogsphere to_vogsphere
 end
 # FUNCTIONS END
 
