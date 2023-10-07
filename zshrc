@@ -5,23 +5,18 @@ PATH=$PATH:/root/.cargo/bin
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 export $(dbus-launch)
-
 # ENVIRONMENT VARIABLES END
+
+#FUNCTIONS
+source $HOME/.dotfiles/zsh_functions.zsh
+#FUNCTIONS END
 
 #git settings 
 git config --global core.editor "nvim"
 #git settings end
 
-#FUNCTIONS
-setbranch_function() {
-  local branch=$(git rev-parse --abbrev-ref HEAD)
-  git push --set-upstream origin "$branch"
-} 									#FUNCTIONS END
-
 # ALIASES
-
 alias grademe='bash -c "$(curl https://grademe.fr)"'
 alias g="sed -i 's/-O3/-g/g' libs/**/Makefile Makefile"
 alias O3="sed -i 's/-g/-O3/g' libs/**/Makefile Makefile"
@@ -32,20 +27,17 @@ alias lx="\ls -la"
 alias fd="fdfind"
 alias paths='echo $PATH | sed "s/:/\n/g"'
 alias norminette='norminette -R CheckForbiddenSourceHeader'
-# git aliases:
-alias s='git status'
+alias s='git status' # git aliases
 alias c='git checkout'
 alias cB='git checkout -B'
 alias setbranch="setbranch_function"
 alias setuser="git config --global user.name \"Vinni-Cedraz\""
 alias setmail="git config --global user.email \"planetexpress0101@gmail.com\""
-# valgrind aliases:
-alias valflags='valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full -q'
+alias valflags='valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full -q' # valgrind aliases
 alias valsupp='valgrind --show-leak-kinds=all --track-origins=yes --leak-check=full --suppressions=readline.supp -q'
 alias callgrind="valgrind --tool=callgrind --callgrind-out-file=callgrind.out"
-#ft_neovim aliases:
-alias n="nvim"
-export P=~/.config/nvim/lua #ft_neovim path
+alias n="nvim" #ft_neovim aliases
+export P=~/.config/nvim/lua
 alias autocommands='nvim $P/user/autocommands.lua'
 alias keymaps='nvim $P/user/keymaps/general_use_keymaps.lua'
 alias colorscheme='nvim $P/core/colorscheme.lua'
@@ -59,7 +51,6 @@ HISTFILE=~/.histfile
 HISTSIZE=999999
 SAVEHIST=999999
 unsetopt autocd beep extendedglob nomatch notify
-# export ZVM_VI_ESCAPE_BINDKEY='jk'
 # End of zsh macros
 
 # 42 header:
@@ -77,20 +68,8 @@ antigen apply
 
 # Set Zsh's keymap to Vi-mode
 bindkey -v
-
-# Bind "jk" to switch to normal (command) mode
-function zle-line-init zle-keymap-select {
-    if [[ $KEYMAP == vicmd ]]; then
-        bindkey -M vicmd 'jk' vi-cmd-mode
-    else
-        bindkey -M viins 'jk' vi-cmd-mode
-    fi
-}
-
 zle -N zle-line-init
 zle -N zle-keymap-select
-
-# Map "jk" to execute the vi-cmd-mode function
 bindkey -M viins 'jk' vi-cmd-mode
 
 

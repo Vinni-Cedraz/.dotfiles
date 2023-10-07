@@ -1,5 +1,3 @@
-TESTS = basic_tuple_operations
-
 INCS = -I../../ -I../../../include/ -I../../../libs/
 FLAGS = -O3 -lcriterion -lm -w
 LIBS = ../../../libs/*.a ../../../minirt.a
