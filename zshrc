@@ -14,6 +14,7 @@ source $HOME/.dotfiles/zsh_functions.zsh
 
 #git settings 
 git config --global core.editor "nvim"
+git config pull.rebase false
 #git settings end
 
 # ALIASES
