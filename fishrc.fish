@@ -4,19 +4,25 @@ test -e ~/.histfile; or set -x HISTFILE ~/.histfile
 test -z "$HISTSIZE"; and set -x HISTSIZE 999999
 test -z "$SAVEHIST"; and set -x SAVEHIST 999999
 
+# SETTING UP OTHER THINGS
+test -z "$ANDROID_HOME"; and set -x ANDROID_HOME "/opt/android-sdk"
+test -z "$ANDROID_SDK_ROOT"; and set -x ANDROID_SDK_ROOT "$HOME/.cmdline-tools/latest"
+test  "$JAVA_HOME"; and set -x JAVA_HOME "$HOME/.local/jdk-17.0.8+7"
+test -z "$NVM_DIR"; and set -x NVM_DIR "$HOME/.config/nvm"
+xmodmap ~/.Xmodmap
+
 # ADD CUSTOM PATHS
+fish_add_path -g /opt/flutter/bin
+fish_add_path -g ~/.local/nvim/bin
 fish_add_path -g ~/.cargo/bin
 fish_add_path -g ~/.local/share/nvim/mason/bin
 fish_add_path -g ~/.cmdline-tools/latest/bin
 fish_add_path -g ~/.local/jdk-17.0.8+7/bin/
 fish_add_path -g ~/.local/jdk-17.0.8+7/bin/emulator
-
-# SETTING UP OTHER THINGS
-test -z "$ANDROID_SDK_HOME"; and set -x ANDROID_SDK_HOME "~/.cmdline-tools/latest"
-test -z "$ANDROID_SDK_ROOT"; and set -x ANDROID_SDK_ROOT "$HOME/.cmdline-tools/latest"
-test  "$JAVA_HOME"; and set -x JAVA_HOME "$HOME/.local/jdk-17.0.8+7"
-test -z "$NVM_DIR"; and set -x NVM_DIR "$HOME/.config/nvm"
-xmodmap ~/.Xmodmap
+fish_add_path -g $ANDROID_HOME/tools/
+fish_add_path -g $ANDROID_HOME/platform-tools/
+fish_add_path -g $ANDROID_HOME/add-ons/
+fish_add_path -g $ANDROID_HOME/platforms/
 
 git config --global --add safe.directory $HOME/ubuntu_22.04_container
 git config --global user.name "Vinni-Cedraz"
@@ -48,9 +54,8 @@ alias ubuntustop "sudo docker stop my_ubuntu_container"
 alias ubuntudel "sudo docker rm my_ubuntu_container"
 alias dimagedel "sudo docker system prune -a --force --volumes"
 alias xrdb "xrdb -merge ~/.Xresources"
-alias g "find . -name 'Makefile' -exec sed -i 's/-O3/-g/g' {} +"
-alias g3 "find . -name 'Makefile' -exec sed -i 's/-g/-g3/g' {} +"
-alias O3 "find . -name 'Makefile' -exec sed -i 's/-g/-O3/g' {} +"
+alias g3 "find . -name 'Makefile' -exec sed -i 's/-O3/-g3/g' {} +"
+alias O3 "find . -name 'Makefile' -exec sed -i 's/-g3/-O3/g' {} +"
 alias callgrind "valgrind --tool=callgrind"
 alias vimbegood 'docker run -it --rm brandoncc/vim-be-good:stable'
 alias rec 'simplescreenrecorder &'
@@ -59,7 +64,6 @@ alias valflags 'valgrind --track-origins=yes --trace-children=yes -q'
 alias valsupp='valgrind --leak-check=full --show-leak-kinds=all --trace-children=yes --suppressions=readline.supp --track-fds=yes --track-origins=yes --trace-children-skip="*/bin/*" -q'
 alias paths 'echo $PATH | sed "s/ /\n/g"'
 alias norminette 'norminette -R CheckForbiddenSourceHeader'
-alias red 'redshift &'
 alias redoff 'pkill redshift'
 alias dstatus 'systemctl status docker' #pra ver se a daemon ta rodando
 alias dstart 'systemctl start docker'   #pra rodar o docker
@@ -79,6 +83,9 @@ function getDownload;
 end
 function cleanDownload;
 	rm (fd --full-path -i -t f $argv[1] ~/Downloads);
+end
+function red;
+	redshift "S 23° 32′ 51" "W 46° 38′ 10" &
 end
 # FUNCTIONS END
 
@@ -100,3 +107,5 @@ alias lsp 'nvim $P/lsp/mason.lua'
 set -x USER 'vcedraz-'
 set -x MAIL 'vcedraz-@student.42sp.org.br'
 #42 header end;
+
+red
