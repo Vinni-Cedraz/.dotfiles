@@ -36,7 +36,7 @@ font = wezterm.font_with_fallback({
   font_size = 13.0,
   window_background_opacity = 0.77,
   enable_tab_bar = false,
-  default_cursor_style = 'Blinking Bar',
+  default_cursor_style = 'BlinkingBar',
   harfbuzz_features = {"cv05", "cv09", "cv16", "ss03", "ss05", "cv21", "cv12", "cv29", "cv28", "cv27"},
 }
 -- &$@*$

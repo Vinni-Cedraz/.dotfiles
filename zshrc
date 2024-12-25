@@ -14,6 +14,8 @@ PATH=$PATH:~/.cargo/bin
 PATH=$PATH:~/.local/share/nvim/mason/bin
 # paths end
 
+export GROQ_API_KEY=
+
 # ZSH PLUGINS
 source ~/.antigen.zsh
 #ZSH PLUGINS END 
