@@ -30,4 +30,3 @@ cp wezterm.lua ~/.config/wezterm
 
 # install and use nvm 
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-source $HOME/.nvm/nvm.sh && nvm install 20 && nvm use 20 # Activate NVM by sourcing the script

@@ -99,3 +99,5 @@ alias lsp='nvim $P/user/lsp/mason.lua'
 export USER='vcedraz-'
 export MAIL='vcedraz-@student.42sp.org.br'
 #42 header end;
+#
+source $HOME/.nvm/nvm.sh && nvm install 20 && nvm use 20 # Activate NVM by sourcing the script
